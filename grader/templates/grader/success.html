@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container"> 
+    <h1>Answer posted! </h1>
+
+    <h2> YOUR SCORE: {{ answer.score }}</h2>
+    <a href="{% url 'home' %}"> Go back to questions page </a>
+</div>
+
+{% endblock %}

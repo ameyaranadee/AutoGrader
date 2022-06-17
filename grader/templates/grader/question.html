@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container"> 
+    <h3> Q: {{ question.question_title }}</h3>
+
+    <h4>Enter answer here: </h4>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="ui secondary button" type="submit">Grade Me!</button>
+    </form>
+
+    <h4> You answer will now be graded </h4>
+
+    <p>Max Score: {{ question.max_score }}</p>
+</div>
+{% endblock %}
