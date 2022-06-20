@@ -39,6 +39,9 @@ def questionsPage(request, pk):
         if form.is_valid():
             content = form.cleaned_data.get('answer')
             score = random.randint(0,10)
+
+            # auto grading nlp code
+
             answer = Answer.objects.create(
                 content=content,
                 score = score,
