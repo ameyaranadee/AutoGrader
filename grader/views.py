@@ -1,3 +1,15 @@
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+import random
+
+from .forms import AnswerForm
+from .models import Question, Answer, Set
+
 # required libraries
 import numpy as np
 from numpy.linalg import norm
@@ -37,17 +49,6 @@ from fuzzywuzzy import process
 from sentence_transformers import SentenceTransformer
 sbert_model = SentenceTransformer('bert-base-nli-mean-tokens')
 
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.http import HttpResponse
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-import random
-
-from .forms import AnswerForm
-from .models import Question, Answer
 
 dataset = pd.read_csv('E:/Internships/C-MInDS/Auto Grading Django/AutoGrader/data/Data.csv')
 dataset_groups = dataset.groupby('Questions')
@@ -179,13 +180,20 @@ def Alignment(sent_a, sent_b):
 # ]
 
 def home(request):
+    sets = Set.objects.all()
     questions = Question.objects.all()
-
-    context = {'questions': questions}
+    
+    context = {'sets': sets, 'questions': questions}
     return render(request, 'grader/home.html', context)
 
 def successPage(request):
     return render(request, 'grader/success.html')
+
+def quizPage(request):
+    questions = Question.objects.all()
+
+    context = {'questions': questions}
+    return render(request, 'grader/quiz.html', context)
 
 def questionsPage(request, pk):
     question = Question.objects.get(id=pk)

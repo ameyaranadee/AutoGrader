@@ -3,24 +3,25 @@
 {% block content %}
 
 <div class="container">
-    <h1 style="padding-top: 10px;">Auto Grader</h1>
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Question</th>
-            </tr>
-        </thead>
-        {% for question in questions %}
-        <tbody>
-            <tr>
-                <td>{{question.id}} </td>
-                <td><a href="question/{{question.id}} ">{{question.question_title}}</a></td>
-            </tr>
-        </tbody>
-        {% endfor %}
-
-    </table>
     
+    <h1 style="padding-top: 10px;">Auto Grader</h1>
+    {% for set in sets %}
+    <div class="ui raised card">
+        <div class="content">
+          <div class="header"> {{set.set_type}} </div>
+          <div class="meta">
+            <span class="category"> {{ questions|length }} questions</span>
+          </div>
+          <div class="description">
+            <p></p>
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="right floated author">
+            <a href="/quiz"><button class="ui secondary button"> Enter</button></a>
+          </div>
+        </div>
+      </div>
+{% endfor %}
 </div>
 {% endblock %}

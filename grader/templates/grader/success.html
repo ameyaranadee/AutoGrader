@@ -5,7 +5,20 @@
 <div class="container"> 
     <h1>Answer posted! </h1>
 
-    <h2> YOUR SCORE: {{ answer.score }}</h2>
+    <h4>SCORE: {{answer.score}} </h4>
+    <!-- <div class="circle-bg-color-anim score-circular">
+        <div class="circle-bg-color-anim score-inner"></div>
+        <div class="score-number" data-after="{{answer.score}}"></div>
+      <div class="circle-text-color-anim score-text">out of 5</div>
+        <div class="score-circle">
+          <div class="circle-bg-color-anim score-bar progress-right">
+            <div class="circle-bg-color-anim score-progress"></div>
+          </div>
+          <div class="circle-bg-color-anim score-bar progress-left">
+            <div class="score-progress"></div>
+          </div>
+        </div>
+      </div> -->
     <a href="{% url 'home' %}"> Go back to questions page </a>
 </div>
 
