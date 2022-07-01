@@ -3,25 +3,32 @@
 {% block content %}
 
 <div class="container">
-    
-    <h1 style="padding-top: 10px;">Auto Grader</h1>
+  <h1 style="padding-top: 10px; padding-bottom: 20px;">Auto Grader</h1>
+  <div class="container-fluid">
+    <div class="row">
+      
     {% for set in sets %}
-    <div class="ui raised card">
-        <div class="content">
-          <div class="header"> {{set.set_type}} </div>
-          <div class="meta">
-            <span class="category"> {{ questions|length }} questions</span>
-          </div>
-          <div class="description">
-            <p></p>
+        <div class="col-lg-6">
+          <div class="ui raised card">
+            <div class="content">
+              <div class="header"> {{set.set_type}} </div>
+              <div class="meta">
+                <span class="category"> {{ questions|length }} questions</span>
+              </div>
+              <div class="description">
+                <p></p>
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="right floated author">
+                <a href="/quiz"><button class="ui secondary button"> Enter</button></a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="extra content">
-          <div class="right floated author">
-            <a href="/quiz"><button class="ui secondary button"> Enter</button></a>
-          </div>
-        </div>
-      </div>
-{% endfor %}
+        {% endfor %}
+    </div>
+  </div>
+  
 </div>
 {% endblock %}

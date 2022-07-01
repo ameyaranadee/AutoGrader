@@ -171,14 +171,7 @@ def Alignment(sent_a, sent_b):
   a = (len(set(x))+len(set(y)))/((len(set(sent_a))+ len(set(sent_b))))
   return a
 
-# Create your views here.
-
-# questions = [
-#     {'id': 1, 'title': 'How to create an app in Django?'}, 
-#     {'id': 2, 'title': 'How to set up a project in Node.js?'}, 
-#     {'id': 3, 'title': 'Is React.js compatible with Django?'}
-# ]
-
+# Create your views here
 def home(request):
     sets = Set.objects.all()
     questions = Question.objects.all()
