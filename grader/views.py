@@ -200,7 +200,7 @@ def questionsPage(request, pk):
         if form.is_valid():
             content = form.cleaned_data.get('answer')
             
-            model_answer = "To simulate the behaviour of portions of the desired software product."
+            model_answer = question.model_answer
             # auto grading nlp code
             data = dataset_groups.get_group(question.question_title)
             
